@@ -1,199 +1,251 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>MicroFlow Team</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>MicroFlow Team</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Шрифты -->
-    <style>
-        @font-face {
-            font-family: "MainText";
-            src: url("maintext.otf");
-        }
-        @font-face {
-            font-family: "Text";
-            src: url("text.otf");
-        }
-    </style>
+<!-- ШРИФТЫ -->
+<style>
+@font-face {
+    font-family: "MainText";
+    src: url("maintext.otf");
+}
+@font-face {
+    font-family: "Text";
+    src: url("text.otf");
+}
+</style>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            min-height: 100vh;
-            font-family: "Text", sans-serif;
-            color: #fff;
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
 
-            /* ЧЁРНАЯ КАРТИНКА ФОНА */
-            background: url("bg.jpg") center center no-repeat fixed;
-            background-size: cover;
-        }
+body {
+    font-family: "Text", sans-serif;
+    color: #fff;
+    background: #000;
+    position: relative;
+}
 
-        header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 24px;
-            font-family: "MainText";
-            font-size: 18px;
-        }
+/* ФОН-КАРТИНКА (НЕ ЛОМАЕТ СКРОЛЛ) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("bg.jpg") center center no-repeat;
+    background-size: cover;
+    z-index: -2;
+}
 
-        header img {
-            height: 34px;
-        }
+/* ЛЁГКОЕ ЗАТЕМНЕНИЕ */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: -1;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 26px;
+    font-family: "MainText";
+    font-size: 18px;
+}
 
-        /* ЖИДКОЕ СТЕКЛО */
-        .card {
-            background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            border-radius: 26px;
-            padding: 32px;
-            box-shadow:
-                inset 0 0 0 1px rgba(255,255,255,0.08),
-                0 25px 60px rgba(0,0,0,0.85);
-        }
+header img {
+    height: 36px;
+}
 
-        h2 {
-            font-family: "MainText";
-            font-size: 38px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-        }
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
 
-        /* ПРОЕКТ */
-        .project {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 32px;
-            align-items: center;
-        }
+/* 🔮 ULTRA LIQUID GLASS */
+.card {
+    position: relative;
+    padding: 36px;
+    border-radius: 30px;
 
-        .project img {
-            width: 100%;
-            border-radius: 22px;
-        }
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.18),
+            rgba(255,255,255,0.02)
+        );
 
-        .project h3 {
-            font-family: "MainText";
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
 
-        .project p {
-            opacity: 0.85;
-            margin-bottom: 6px;
-        }
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.9),
+        inset 0 0 0 1px rgba(255,255,255,0.25),
+        inset 0 0 40px rgba(255,255,255,0.12);
+}
 
-        /* СОЗДАТЕЛЬ */
-        .creator {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
+/* REFRACTION LAYER */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,0.35),
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(255,255,255,0.25),
+            transparent 55%
+        );
+    opacity: 0.6;
+    pointer-events: none;
+}
 
-        .creator img {
-            width: 190px;
-            height: 190px;
-            object-fit: cover;
-            border-radius: 26px;
-        }
+/* DEPTH EDGE */
+.card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.35),
+        inset 0 -10px 20px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
 
-        .creator h3 {
-            font-family: "MainText";
-            font-size: 34px;
-        }
+/* TITLES */
+h2 {
+    font-family: "MainText";
+    font-size: 38px;
+    margin-bottom: 26px;
+    text-transform: uppercase;
+}
 
-        .creator span {
-            display: block;
-            margin-top: 4px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
+/* PROJECT */
+.project {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 34px;
+    align-items: center;
+}
 
-        .creator p {
-            margin-top: 14px;
-            max-width: 520px;
-            opacity: 0.85;
-        }
+.project img {
+    width: 100%;
+    border-radius: 22px;
+}
 
-        /* СВЯЗЬ */
-        .contact {
-            text-align: center;
-        }
+.project h3 {
+    font-family: "MainText";
+    font-size: 34px;
+    margin-bottom: 10px;
+}
 
-        .contact p {
-            margin-bottom: 24px;
-            font-size: 18px;
-            opacity: 0.85;
-        }
+/* CREATOR */
+.creator {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
 
-        .contact a {
-            display: inline-block;
-            padding: 16px 44px;
-            border-radius: 16px;
-            background: #fff;
-            color: #000;
-            font-family: "MainText";
-            font-size: 20px;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.creator img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 28px;
+}
 
-        .contact a:hover {
-            transform: scale(1.06);
-            box-shadow: 0 0 30px rgba(255,255,255,0.6);
-        }
+.creator h3 {
+    font-family: "MainText";
+    font-size: 34px;
+}
 
-        footer {
-            text-align: center;
-            padding: 50px 10px;
-            font-size: 14px;
-            opacity: 0.6;
-        }
+.creator span {
+    opacity: 0.7;
+    font-size: 14px;
+}
 
-        /* АДАПТИВ */
-        @media (max-width: 850px) {
-            .project {
-                grid-template-columns: 1fr;
-            }
-            .creator {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+/* CONTACT */
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    margin-bottom: 26px;
+    font-size: 18px;
+}
+
+.contact a {
+    display: inline-block;
+    padding: 18px 46px;
+    border-radius: 18px;
+    background: #fff;
+    color: #000;
+    font-family: "MainText";
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.contact a:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(255,255,255,0.8);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 60px 10px;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+/* ADAPTIVE */
+@media (max-width: 850px) {
+    .project {
+        grid-template-columns: 1fr;
+    }
+    .creator {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <img src="logo.jpg" alt="Logo">
+    <img src="logo.jpg">
     MicroFlow Team
 </header>
 
 <div class="container">
 
-    <!-- НАШИ ПРОЕКТЫ -->
     <div class="card">
         <h2>Наши проекты</h2>
-
         <div class="project">
-            <img src="connectummessenger.jpg" alt="Connectum">
-
+            <img src="connectummessenger.jpg">
             <div>
                 <h3>CONNECTUM</h3>
                 <p>Дата релиза: не определена</p>
@@ -202,29 +254,21 @@
         </div>
     </div>
 
-    <!-- СОЗДАТЕЛЬ -->
     <div class="card">
         <h2>Создатель команды</h2>
-
         <div class="creator">
-            <img src="creator.jpg" alt="Маняти Богдан">
-
+            <img src="creator.jpg">
             <div>
                 <h3>Маняти Богдан</h3>
                 <span>13 лет</span>
-                <p>
-                    Я крутой очень крутой офигенный программист на Python
-                    и очень крутой и создал свою команду
-                </p>
+                <p>Я крутой очень крутой офигенный программист на Python и создал свою команду</p>
             </div>
         </div>
     </div>
 
-    <!-- СВЯЗЬ -->
     <div class="card contact">
         <h2>Связь с нами</h2>
         <p>Ты кто-то кто умеет творить? Заходи к нам в команду!</p>
-
         <a href="https://t.me/thebogdand" target="_blank">Я крутой</a>
     </div>
 
