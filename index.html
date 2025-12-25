@@ -5,6 +5,9 @@
 <title>MicroFlow Team</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- FAVICON -->
+<link rel="icon" type="image/x-icon" href="icon.ico">
+
 <!-- ШРИФТЫ -->
 <style>
 @font-face {
@@ -36,7 +39,7 @@ body {
     position: relative;
 }
 
-/* ФОН-КАРТИНКА (НЕ ЛОМАЕТ СКРОЛЛ) */
+/* ФОН (ЧЁРНАЯ КАРТИНКА) */
 body::before {
     content: "";
     position: fixed;
@@ -46,12 +49,12 @@ body::before {
     z-index: -2;
 }
 
-/* ЛЁГКОЕ ЗАТЕМНЕНИЕ */
+/* МИНИМАЛЬНОЕ ЗАТЕМНЕНИЕ */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0,0,0,0.25);
     z-index: -1;
 }
 
@@ -76,32 +79,31 @@ header img {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 56px;
 }
 
-/* 🔮 ULTRA LIQUID GLASS */
+/* 🧊 ULTRA TRANSPARENT LIQUID GLASS */
 .card {
     position: relative;
-    padding: 36px;
-    border-radius: 30px;
+    padding: 38px;
+    border-radius: 32px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,0.18),
-            rgba(255,255,255,0.02)
-        );
+    /* МАКСИМАЛЬНАЯ ПРОЗРАЧНОСТЬ */
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.07),
+        rgba(255,255,255,0.015)
+    );
 
-    backdrop-filter: blur(10px) saturate(180%);
-    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
 
     box-shadow:
-        0 40px 80px rgba(0,0,0,0.9),
-        inset 0 0 0 1px rgba(255,255,255,0.25),
-        inset 0 0 40px rgba(255,255,255,0.12);
+        0 50px 90px rgba(0,0,0,0.9),
+        inset 0 0 0 1px rgba(255,255,255,0.18);
 }
 
-/* REFRACTION LAYER */
+/* REFRACTION / БЛИКИ */
 .card::before {
     content: "";
     position: absolute;
@@ -109,28 +111,28 @@ header img {
     border-radius: inherit;
     background:
         radial-gradient(
-            circle at 30% 20%,
+            circle at 25% 15%,
             rgba(255,255,255,0.35),
             transparent 60%
         ),
         radial-gradient(
-            circle at 70% 80%,
-            rgba(255,255,255,0.25),
+            circle at 80% 85%,
+            rgba(255,255,255,0.22),
             transparent 55%
         );
-    opacity: 0.6;
+    opacity: 0.45;
     pointer-events: none;
 }
 
-/* DEPTH EDGE */
+/* ГЛУБИНА КРАЯ */
 .card::after {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.35),
-        inset 0 -10px 20px rgba(0,0,0,0.4);
+        inset 0 0 0 1px rgba(255,255,255,0.25),
+        inset 0 -14px 22px rgba(0,0,0,0.45);
     pointer-events: none;
 }
 
@@ -138,7 +140,7 @@ header img {
 h2 {
     font-family: "MainText";
     font-size: 38px;
-    margin-bottom: 26px;
+    margin-bottom: 28px;
     text-transform: uppercase;
 }
 
@@ -146,13 +148,13 @@ h2 {
 .project {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 34px;
+    gap: 36px;
     align-items: center;
 }
 
 .project img {
     width: 100%;
-    border-radius: 22px;
+    border-radius: 24px;
 }
 
 .project h3 {
@@ -164,7 +166,7 @@ h2 {
 /* CREATOR */
 .creator {
     display: flex;
-    gap: 32px;
+    gap: 34px;
     align-items: center;
 }
 
@@ -172,7 +174,7 @@ h2 {
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 28px;
+    border-radius: 30px;
 }
 
 .creator h3 {
@@ -181,7 +183,7 @@ h2 {
 }
 
 .creator span {
-    opacity: 0.7;
+    opacity: 0.65;
     font-size: 14px;
 }
 
@@ -191,14 +193,15 @@ h2 {
 }
 
 .contact p {
-    margin-bottom: 26px;
+    margin-bottom: 28px;
     font-size: 18px;
+    opacity: 0.9;
 }
 
 .contact a {
     display: inline-block;
-    padding: 18px 46px;
-    border-radius: 18px;
+    padding: 18px 48px;
+    border-radius: 20px;
     background: #fff;
     color: #000;
     font-family: "MainText";
@@ -208,14 +211,14 @@ h2 {
 }
 
 .contact a:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 35px rgba(255,255,255,0.8);
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(255,255,255,0.9);
 }
 
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 60px 10px;
+    padding: 64px 10px;
     font-size: 14px;
     opacity: 0.6;
 }
